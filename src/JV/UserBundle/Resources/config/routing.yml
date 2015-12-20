@@ -2,6 +2,52 @@ jv_user_homepage:
     path:     /hello/{name}
     defaults: { _controller: JVUserBundle:Default:index }
     
+jv_user_helloworld:
+    path:     /user/helloworld
+    defaults: { _controller: JVUserBundle:User:helloWorld }
+
+jv_user_article:
+    path:     /user/article/{page}
+    defaults: { _controller: JVUserBundle:User:article, page: 1 }
+    requirements:
+        page:  \d+
+        
 jv_user_index:
     path:     /user/index
     defaults: { _controller: JVUserBundle:User:index }
+    
+jv_user_add:
+    path:     /user/add
+    defaults: { _controller: JVUserBundle:User:add }
+    
+jv_user_create:
+    path:     /user/create
+    defaults: { _controller: JVUserBundle:User:create }
+    methods: POST
+    
+jv_user_view:
+    path:     /user/view/{id}
+    defaults: { _controller: JVUserBundle:User:view }
+    requirements:
+        page:  \d+
+
+jv_user_edit:
+    path:     /user/edit/{id}
+    defaults: { _controller: JVUserBundle:User:edit }
+    requirements:
+        page:  \d+
+
+
+
+jv_user_delete:
+    path:     /user/delete/{id}
+    defaults: { _controller: EMMUserBundle:User:delete }
+    requirements:
+        page:  \d+
+    
+jv_user_redirect_add:
+    path: /user/create
+    defaults:
+        _controller: EMMUserBundle:User:add
+        path: /user/add
+        permanent: true
